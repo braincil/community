@@ -1,0 +1,9 @@
+<h1>Edit topic</h1>
+
+<%=simple_form_for @topic do |f| %>
+	<%=f.input :title%>
+	<%=f.input :content%>
+
+	<%= f.button :submit %>
+
+<%end%>

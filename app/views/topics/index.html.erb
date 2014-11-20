@@ -1,0 +1,12 @@
+<h1>Index page</h1>
+
+
+	<% @topics.each do |topic| %>
+	<article>
+		<h2><%=topic.title%></h2>
+		<p><%=topic.content%></p>
+		</article>
+		<hr>
+		<%=link_to "DELETE",topic_path(topic), method: :delete, data: {confirm: "Are you sure" } ,class: "glyphicon glyphicon-trash" %>
+	<%end%>
+<%=link_to "New topic", new_topic_path %>
