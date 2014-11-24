@@ -1,9 +1,64 @@
 <h1>create new topic</h1>
 
-	<%= simple_form_for @topic do |f|%>
-		<%=f.input :title %>
-		<%=f.input :content %>
 
-		<%=f.button :submit %>
+<div class="container">
+  <div class="row">
+	<div class="col-md-9">
+		<div class="panel panel-default">
+	      <div class="panel-heading clearfix">
+	      		<h3 class="panel-title">Categorie</h3>
+	      </div>
 
-	<%end%>
+	       <div class="panel-body sec">
+	      	<%= simple_form_for(@topic, html: {class: 'form-horizontal' }) do |f|%>
+	      	  <div class="row">
+	      	  	<div class="col-md-9">
+	      	  		<div class="form-group">
+	      	  			<%=f.text_field :title, placeholder:"Title", class: "form-control" , tabIndex: 1%>
+	      	  		</div>
+
+	      	  	</div>
+	      	  	<div class="col-md-3">
+	      	  		<div class="from-group sel">
+	      	  			<%=f.collection_select :category_id, Category.all, :id, :name, prompt: "Select one", input_html:{class: "form-control"} %>
+	      	  			
+	      	  		</div>		
+	      	  	</div>
+	      	  </div>	
+	      	  <!-- ./ End of row -->
+
+	      	  <div class="form-group" >
+	      	  	<%=f.input :content,class: "form-control"%> 	
+	      	  </div>
+
+
+	      	  <div class="form-group">
+	      	  	<%=f.button :submit %>
+	      	  </div>
+			<%end%>
+	      </div>
+	      <!-- end of panel body -->	
+
+
+	     </div> 
+		<!-- ./ End of panel -->
+	</div>
+	<!-- ./End of Col-->	
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+

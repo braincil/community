@@ -2,7 +2,12 @@ class TopicsController < ApplicationController
 	before_action :find_topic, only: [:show,:edit,:update,:destroy]
 
 	def index
-		@topics= Topic.all.order("created_at DESC")
+		if params[:category].blank?  #if the category params are empty
+		  @topics= Topic.all.order("created_at DESC") #show all the topics
+		else
+			@category_id = Category.find_by(name: params[:category]).id #find the category_id
+			@topics = Topic.where(category_id: @category_id).order("created_at DESC") #loop through the jobs that have that ID 
+		end
 	end
 
 
@@ -49,7 +54,7 @@ class TopicsController < ApplicationController
 
 	private
 		def topic_params
-			params.require(:topic).permit(:title,:content)
+			params.require(:topic).permit(:title,:content,:category_id)
 		end
 
 		def find_topic

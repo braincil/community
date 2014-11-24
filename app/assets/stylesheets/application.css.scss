@@ -54,3 +54,16 @@ li.list-group-item:hover {
 	border-top-left-radius:0px;
 	border-top-right-radius:0px; 
 }
+
+
+.sec{
+	padding: 50px;
+}
+
+
+/*Hide the sidebar if the screen is smaller than 1240px*/
+@media (max-width: 1240px) { 
+    .side{
+        display:none;
+    }
+}

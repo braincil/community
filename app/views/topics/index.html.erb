@@ -4,7 +4,7 @@
 	  <div class="col-md-9">
 	    <div class="panel panel-default">
 	      <div class="panel-heading clearfix">
-	      		<h3 class="panel-title">Categorie</h3>
+	      		<h3 class="panel-title">Latest Posts</h3>
 	      </div>	
 
 	       <div class="panel-body">
@@ -21,7 +21,7 @@
 			       	  	 	<div>
 			       	  	 		<a href=""><b><%= topic.title%></b></a>
 			       	  	 		 <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                        By: <a href="#">Bhaumik Patel</a> <%=time_ago_in_words(topic.created_at)%> ago
                                  </div>
 			       	  	 	</div>
 
@@ -39,9 +39,7 @@
                                     </button>
                                     <% end %>
                                 </div>
-			       	  	 		
-			       	  	 			
-			       	  	 
+
 			       	  	 </div>
 			       	  	 <!--end of col -->
 					   </div>
@@ -55,7 +53,25 @@
 	     <!-- ./ end of panel -->
 	     <%=link_to "New topic", new_topic_path %>
 	   </div>
-	   <!-- ./end of col -->
+	   <!-- ./end of col 9 -->
+
+	   <div class="col-md-3 side">
+	   		<div class="panel panel-default">
+	     		 <div class="panel-heading clearfix">
+	      			<h3 class="panel-title">Categories</h3>
+	    		  </div>
+	   			<ul class="nav nav-pills nav-stacked">
+	   				<li>
+	   					<%Category.all.each do |category| %>
+	   						<%=link_to category.name, topics_path(category: category.name)%>
+	   					<%end%>
+	   				</li>
+	   				
+	   			</ul>
+	   		</div>
+	   </div>
+
+
 	 </div>
 	 <!-- ./End of row-->
 	</div>
