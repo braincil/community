@@ -1,12 +1,64 @@
-<h1>Index page</h1>
+
+<div class="container" >
+	<div class="row">
+	  <div class="col-md-9">
+	    <div class="panel panel-default">
+	      <div class="panel-heading clearfix">
+	      		<h3 class="panel-title">Categorie</h3>
+	      </div>	
+
+	       <div class="panel-body">
+	       <% @topics.each do |topic| %>
+	       	  <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+			       	  	 	  <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /> 	  	 	
+			       	  	    </div>
 
 
-	<% @topics.each do |topic| %>
-	<article>
-		<h2><%=topic.title%></h2>
-		<p><%=topic.content%></p>
-		</article>
-		<hr>
-		<%=link_to "DELETE",topic_path(topic), method: :delete, data: {confirm: "Are you sure" } ,class: "glyphicon glyphicon-trash" %>
-	<%end%>
-<%=link_to "New topic", new_topic_path %>
+			       	  	  <div class="col-xs-10 col-md-11">
+			       	  	 	<div>
+			       	  	 		<a href=""><b><%= topic.title%></b></a>
+			       	  	 		 <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                 </div>
+			       	  	 	</div>
+
+
+			       	  	 	<div class="action">
+			       	  	 		<%= link_to edit_topic_path(topic) do%>
+                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                 <%end%>
+                                
+								<%= link_to topic_path(topic), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    <% end %>
+                                </div>
+			       	  	 		
+			       	  	 			
+			       	  	 
+			       	  	 </div>
+			       	  	 <!--end of col -->
+					   </div>
+					   <!--end of row-->
+					  </li>
+					</ul>  
+	       	 <% end %> 
+	       	</div>
+	       	<!-- ./End of panel-body -->
+	     </div>
+	     <!-- ./ end of panel -->
+	     <%=link_to "New topic", new_topic_path %>
+	   </div>
+	   <!-- ./end of col -->
+	 </div>
+	 <!-- ./End of row-->
+	</div>
+	<!-- ./ End of container -->
+
+                     
